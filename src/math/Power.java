@@ -29,7 +29,16 @@ public class Power {
     }
 
     public static int powerItr(int a, int b) {
-        return 1;
+        int result = 1;
+
+        while (b > 0) {
+            if (b % 2 == 1)
+                result *= a;
+            a *= a;
+            b /= 2;
+        }
+
+        return result;
     }
 
     public static double power(int x, int n) {
