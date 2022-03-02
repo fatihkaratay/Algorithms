@@ -3,7 +3,7 @@ package math;
 /**
  * computing the power of any numbers.
  * We have both recursive and iterative way.
- * Also, we have bit manipulation approach for the really large and negative numbers.
+ * Also, we have bit-manipulation approach for the really large and negative numbers.
  */
 
 public class Power {
