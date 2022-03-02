@@ -42,6 +42,21 @@ public class ExtraCharDecreaser {
     }
 
     public static String extraDupCharRemover(String str) {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        boolean isFirst = true;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '*') {
+                if (isFirst) {
+                    sb.append(str.charAt(i));
+                    isFirst = false;
+                }
+            } else {
+                sb.append(str.charAt(i));
+                isFirst = true;
+            }
+        }
+
+        return sb.toString();
     }
 }
