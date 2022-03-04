@@ -15,6 +15,8 @@ public class DFS {
 
         inOrderTraversal(root);
         System.out.println();
+
+        postOrderTraversal(root);
     }
 
     // root-left-right
@@ -35,5 +37,14 @@ public class DFS {
         inOrderTraversal(node.left);
         System.out.print(node.val + " ");
         inOrderTraversal(node.right);
+    }
+
+    // left-right-root
+    public static void postOrderTraversal(Node node) {
+        if (node == null)
+            return;
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
+        System.out.print(node.val + " ");
     }
 }
