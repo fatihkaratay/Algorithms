@@ -1,5 +1,8 @@
 package binarytree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Getting the nodes at distance K from the root,
  * And storing them to a list.
@@ -16,17 +19,22 @@ public class GetNodesAtK_Distance {
         root.left.left.left = new Node(3);
         root.left.left.right = new Node(8);
 
-        printNodesAtK_Distance(root, 3);
+        List<Integer> list = new ArrayList<>();
+        getNodesAtK_Distance(root, list, 2);
+
+        System.out.println(list);
 
     }
 
-    public static void printNodesAtK_Distance(Node root, int k) {
+    public static void getNodesAtK_Distance(Node root, List<Integer> list, int k) {
         if (root == null)
             return;
-        if (k == 0)
-            System.out.print(root.val + " ");
+        if (k == 0) {
+            list.add(root.val);
+            return;
+        }
 
-        printNodesAtK_Distance(root.left, k-1);
-        printNodesAtK_Distance(root.right, k-1);
+        getNodesAtK_Distance(root.left, list, k-1);
+        getNodesAtK_Distance(root.right, list, k-1);
     }
 }
