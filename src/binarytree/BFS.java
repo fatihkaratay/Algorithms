@@ -30,8 +30,30 @@ public class BFS {
     }
 
     public static List<Integer> rightSideView(Node root) {
-        return null;
+        if (root == null) return new ArrayList<>();
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        List<Integer> list = new ArrayList();
+
+        while (!queue.isEmpty()) {
+            int levelLength = queue.size();
+
+            for (int i = 0; i < levelLength; ++i) {
+                Node node = queue.poll();
+                // if it's the rightmost element
+                if (i == levelLength - 1) list.add(node.val);
+
+                // add child nodes in the queue
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+        }
+
+        return list;
     }
+
     public static List<Integer> leftSideView(Node root) {
         return null;
     }
