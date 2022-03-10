@@ -23,10 +23,12 @@ public class BFS {
         List<Integer> list1 = topDownView(root);
         List<Integer> list2 = leftSideView(root);
         List<Integer> list3 = rightSideView(root);
+        List<Integer> list4 = bottomView(root); // leave Nodes
 
         System.out.println(list1);
         System.out.println(list2);
         System.out.println(list3);
+        System.out.println(list4);
     }
 
     public static List<Integer> rightSideView(Node root) {
@@ -63,7 +65,6 @@ public class BFS {
         while (!q.isEmpty()) {
             int size = q.size();
 
-
             for (int i = 0; i < size; i++) {
                 Node node = q.poll();
                 // if it's the leftmost element
@@ -75,6 +76,7 @@ public class BFS {
 
         return list;
     }
+
     public static List<Integer> topDownView(Node root) {
         List<Integer> list = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
@@ -89,5 +91,27 @@ public class BFS {
         }
 
         return list;
+    }
+
+    public static List<Integer> bottomView(Node root) {
+        List<Integer> list = new ArrayList<>();
+        bottomView(root, list);
+
+        return list;
+    }
+
+    public static void bottomView(Node root, List<Integer> list) {
+        if (root == null)
+            return;
+
+        if (root.left == null && root.right == null) {
+            list.add(root.val);
+            return;
+        }
+
+        if (root.left != null )
+            bottomView(root.left, list);
+        if (root.right != null)
+            bottomView(root.right, list);
     }
 }
