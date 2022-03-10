@@ -55,7 +55,25 @@ public class BFS {
     }
 
     public static List<Integer> leftSideView(Node root) {
-        return null;
+        if (root == null) return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+
+
+            for (int i = 0; i < size; i++) {
+                Node node = q.poll();
+                // if it's the leftmost element
+                if (i == 0) list.add(node.val);
+                if (node.left != null) q.offer(node.left);
+                if (node.right != null) q.offer(node.right);
+            }
+        }
+
+        return list;
     }
     public static List<Integer> topDownView(Node root) {
         List<Integer> list = new ArrayList<>();
