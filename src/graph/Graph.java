@@ -27,6 +27,17 @@ public class Graph {
 
     }
 
+    public void removeNode(String label) {
+        Node node = nodes.get(label);
+        if (node == null) return;
+
+        for (Node n : adList.keySet())
+            adList.get(n).remove(node);
+
+        adList.remove(node);
+        nodes.remove(node);
+    }
+
     public void print() {
         for (Node source : adList.keySet()) {
             List<Node> targets = adList.get(source);

@@ -14,5 +14,9 @@ public class GraphMain {
         g.addEdge("D", "B");
 
         g.print();
+
+        g.removeNode("A");
+
+        g.print();
     }
 }
