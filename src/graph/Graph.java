@@ -38,6 +38,15 @@ public class Graph {
         nodes.remove(node);
     }
 
+    public void removeEdge(String from, String to) {
+        Node fromNode = nodes.get(from);
+        Node toNode = nodes.get(to);
+
+        if (fromNode == null || toNode == null) return;
+
+        adList.get(fromNode).remove(toNode);
+    }
+
     public void print() {
         for (Node source : adList.keySet()) {
             List<Node> targets = adList.get(source);

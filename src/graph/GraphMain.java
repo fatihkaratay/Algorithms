@@ -15,7 +15,8 @@ public class GraphMain {
 
         g.print();
 
-        g.removeNode("A");
+        g.removeEdge("A", "B");
+        System.out.println();
 
         g.print();
     }
