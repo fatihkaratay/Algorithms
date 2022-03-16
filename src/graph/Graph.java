@@ -6,18 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Graph {
-    private class Node {
-        private String label;
 
-        public Node(String label) {
-            this.label = label;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
-    }
     private Map<String, Node> nodes = new HashMap<>();
     private Map<Node, List<Node>> adList = new HashMap<>();
 
