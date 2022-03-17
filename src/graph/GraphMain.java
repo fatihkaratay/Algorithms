@@ -9,15 +9,13 @@ public class GraphMain {
         g.addNode("D");
 
         g.addEdge("A", "B");
+        g.addEdge("A", "D");
+        g.addEdge("A", "C");
         g.addEdge("C", "D");
-        g.addEdge("C", "A");
         g.addEdge("D", "B");
 
-        g.print();
+//        g.print();
 
-        g.removeEdge("A", "B");
-        System.out.println();
-
-        g.print();
+        g.dfs("A");
     }
 }
