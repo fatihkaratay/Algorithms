@@ -83,6 +83,52 @@ public class Graph {
         }
     }
 
+    public void bfs(String label) {
+        Node root = nodes.get(label);
+        if (root == null) return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+
+        Set<Node> visited = new HashSet<>();
+
+        while (!q.isEmpty()) {
+            Node current = q.remove();
+            if (visited.contains(current))
+                continue;
+            System.out.print(current + " ");
+            visited.add(current);
+
+            for (Node n : adList.get(current))
+                if (!visited.contains(n))
+                    q.offer(n);
+        }
+    }
+
+    public List<String> topoSort() {
+        List<String> res = new ArrayList<>();
+        Set<Node> set = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+
+        for (Node node : nodes.values())
+            topoSort(node, set, stack);
+
+        while (!stack.isEmpty())
+            res.add(stack.pop().label);
+
+        return res;
+    }
+    private void topoSort(Node node, Set<Node> set, Stack<Node> stack) {
+        if (set.contains(node))
+            return;
+        set.add(node);
+
+        for (Node n : adList.get(node))
+            topoSort(n, set, stack);
+
+        stack.push(node);
+    }
+
     public void print() {
         for (Node source : adList.keySet()) {
             List<Node> targets = adList.get(source);

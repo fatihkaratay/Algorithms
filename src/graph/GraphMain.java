@@ -1,23 +1,22 @@
 package graph;
 
+import java.util.List;
+
 public class GraphMain {
     public static void main(String[] args) {
         Graph g = new Graph();
+        g.addNode("X");
         g.addNode("A");
         g.addNode("B");
-        g.addNode("C");
-        g.addNode("D");
+        g.addNode("P");
 
-        g.addEdge("A", "B");
-        g.addEdge("A", "D");
-        g.addEdge("A", "C");
-        g.addEdge("C", "D");
-        g.addEdge("D", "B");
+        g.addEdge("X", "A");
+        g.addEdge("X", "B");
+        g.addEdge("A", "P");
+        g.addEdge("B", "P");
 
-//        g.print();
+        List<String> topoSortList = g.topoSort();
 
-        g.dfsRec("A");
-        System.out.println();
-        g.dfsItr("A");
+        System.out.println(topoSortList);
     }
 }
