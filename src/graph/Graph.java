@@ -44,19 +44,43 @@ public class Graph {
         adList.get(fromNode).remove(toNode);
     }
 
-    public void dfs(String root) {
+    public void dfsRec(String root) {
         Node node = nodes.get(root);
         if (node == null)
             return;
-        dfs(node, new HashSet<>());
+        dfsRec(node, new HashSet<>());
     }
-    private void dfs(Node root, Set<Node> visited) {
+    private void dfsRec(Node root, Set<Node> visited) {
         System.out.print(root + " ");
         visited.add(root);
 
         for (Node node : adList.get(root))
             if (!visited.contains(node))
-                dfs(node, visited);
+                dfsRec(node, visited);
+    }
+
+    public void dfsItr(String label) {
+        Node root = nodes.get(label);
+        if (root == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+
+            if (visited.contains(current))
+                continue;
+            System.out.print(current + " ");
+            visited.add(current);
+
+            for (Node n : adList.get(current))
+                if (!visited.contains(n))
+                    stack.push(n);
+        }
     }
 
     public void print() {

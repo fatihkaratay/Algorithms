@@ -16,6 +16,8 @@ public class GraphMain {
 
 //        g.print();
 
-        g.dfs("A");
+        g.dfsRec("A");
+        System.out.println();
+        g.dfsItr("A");
     }
 }
