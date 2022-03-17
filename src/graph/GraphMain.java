@@ -14,9 +14,8 @@ public class GraphMain {
         g.addEdge("X", "B");
         g.addEdge("A", "P");
         g.addEdge("B", "P");
+        g.addEdge("P", "A");
 
-        List<String> topoSortList = g.topoSort();
-
-        System.out.println(topoSortList);
+        System.out.println(g.hasCycle());
     }
 }

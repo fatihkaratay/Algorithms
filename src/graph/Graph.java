@@ -129,6 +129,40 @@ public class Graph {
         stack.push(node);
     }
 
+    public boolean hasCycle() {
+        Set<Node> all = new HashSet<>();
+        all.addAll(nodes.values());
+
+        Set<Node> visiting = new HashSet<>();
+        Set<Node> visited = new HashSet<>();
+
+        while (!all.isEmpty()) {
+            Node current = all.iterator().next();
+            if (hasCycle(current, all, visiting, visited))
+                return true;
+        }
+
+        return false;
+    }
+    private boolean hasCycle(Node node, Set<Node> all, Set<Node> visiting, Set<Node> visited) {
+        all.remove(node);
+        visiting.add(node);
+
+        // visit all of its neighbors.
+        for (Node n : adList.get(node)) {
+            if (visited.contains(n)) continue;
+            if (visiting.contains(n))
+                return true;
+            if (hasCycle(n, all, visiting, visited))
+                return true;
+        }
+
+        visiting.remove(node);
+        visited.add(node);
+
+        return false;
+    }
+
     public void print() {
         for (Node source : adList.keySet()) {
             List<Node> targets = adList.get(source);
