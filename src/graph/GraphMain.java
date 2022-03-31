@@ -5,16 +5,16 @@ import java.util.List;
 public class GraphMain {
     public static void main(String[] args) {
         Graph g = new Graph();
-        g.addNode("X");
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("P");
+        g.addNode("1");
+        g.addNode("0");
 
-        g.addEdge("X", "A");
-        g.addEdge("X", "B");
-        g.addEdge("A", "P");
-        g.addEdge("B", "P");
-        g.addEdge("P", "A");
+        g.addEdge("1", "0");
+        g.addEdge("0", "1");
+
+        g.print();
+
+        List<String> list = g.topoSort();
+        System.out.println(list);
 
         System.out.println(g.hasCycle());
     }
